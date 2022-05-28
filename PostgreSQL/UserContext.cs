@@ -10,17 +10,8 @@ public class UserContext : DbContext
 
     public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-            optionsBuilder.UseNpgsql(@"Server=localhost;port=5432;database=TestBase;Username=postgres;password=5gkm40540");
-        }
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        
         modelBuilder.Entity<User>().Property(p => p.Name).IsRequired();
         modelBuilder.Entity<User>().Property(p => p.Surname).IsRequired();
         modelBuilder.Entity<User>().Property(p => p.Birthday).IsRequired();
