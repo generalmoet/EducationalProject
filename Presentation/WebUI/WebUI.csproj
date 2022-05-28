@@ -16,7 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PostgreSQL\PostgreSQL.csproj" />
+    <ProjectReference Include="..\..\Application\Application.csproj" />
+    <ProjectReference Include="..\..\PostgreSQL\PostgreSQL.csproj" />
   </ItemGroup>
 
 </Project>
