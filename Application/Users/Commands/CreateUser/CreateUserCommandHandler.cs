@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Core.Application.Users.Commands;
 
-public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Unit>
+public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
 {
     private readonly IUserDbContext _context;
 

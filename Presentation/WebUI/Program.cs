@@ -27,11 +27,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-
 var app = builder.Build();
-app.UseHttpsRedirection();
-app.UseCors("AllowAll");
-app.UseRouting();
 
 using (var scope = app.Services.CreateScope())
 {
@@ -41,11 +37,13 @@ using (var scope = app.Services.CreateScope())
         var context = serviceProvider.GetRequiredService<UserContext>();
         DbInitializer.Initialize(context);
     }
-    catch (Exception ex)
-    {
-
-    }
+    catch (Exception ex) { }
 }
+app.UseHttpsRedirection();
+app.UseCors("AllowAll");
+app.UseRouting();
+
+
 
 app.UseEndpoints(endpoints =>
 {

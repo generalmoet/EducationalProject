@@ -4,7 +4,7 @@ using Core.Domain.Models;
 
 namespace Core.Application.Users.Queries;
 
-public class UserViewModel : IMapWith<User>
+public class UserVm : IMapWith<User>
 {
     public string Name { get; set; }
     public string Surname { get; set; }
@@ -12,7 +12,7 @@ public class UserViewModel : IMapWith<User>
 
     public void Mapping(Profile profile)
     {
-        profile.CreateMap<User, UserViewModel>()
+        profile.CreateMap<User, UserVm>()
             .ForMember(userVm => userVm.Name, opt => opt.MapFrom(user => user.Name))
             .ForMember(userVm => userVm.Surname, opt => opt.MapFrom(user => user.Surname))
             .ForMember(userVm => userVm.Birthday, opt => opt.MapFrom(user => user.Birthday));
