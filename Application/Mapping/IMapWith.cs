@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 
-namespace Application.Mapping;
+namespace Core.Application.Mapping;
 
-public interface IMap<T>
+public interface IMapWith<T>
 {
     void Mapping(Profile profile) => profile.CreateMap(typeof(T), GetType());
 }

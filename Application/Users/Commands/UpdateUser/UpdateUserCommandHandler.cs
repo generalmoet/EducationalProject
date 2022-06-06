@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Core.Application.Users.Commands;
 
-public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
+public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Unit>
 {
     private readonly IUserDbContext _context;
 

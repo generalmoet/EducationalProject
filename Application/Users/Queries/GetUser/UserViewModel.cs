@@ -1,10 +1,10 @@
-﻿using Application.Mapping;
+﻿using Core.Application.Mapping;
 using AutoMapper;
 using Core.Domain.Models;
 
 namespace Core.Application.Users.Queries;
 
-public class UserViewModel : IMap<User>
+public class UserViewModel : IMapWith<User>
 {
     public string Name { get; set; }
     public string Surname { get; set; }

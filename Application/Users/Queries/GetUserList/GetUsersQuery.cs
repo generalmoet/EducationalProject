@@ -1,6 +1,4 @@
-﻿using Application.Mapping;
-using Core.Domain.Models;
-using MediatR;
+﻿using MediatR;
 
 namespace Core.Application.Users.Queries;
 

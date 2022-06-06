@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Core.Application.Users.Commands;
 
-public class DeleteUserCommandHandler : IRequest<DeleteUserCommand>
+public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, Unit>
 {
     private readonly IUserDbContext _context;
 

@@ -1,11 +1,11 @@
-﻿using Application.Mapping;
+﻿using Core.Application.Mapping;
 using AutoMapper;
 using Core.Domain.Models;
 using MediatR;
 
 namespace Core.Application.Users.Queries;
 
-public class UserListDto : IMap<User>
+public class UserListDto : IMapWith<User>
 {
     public string Name { get; set; }
     public string Surname { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Core.Application.Users.Commands;
 
-public class UpdateUserCommand : IRequest
+public class UpdateUserCommand : IRequest<Unit>
 {
     public int Id { get; set; }
     public string Name { get; set; }

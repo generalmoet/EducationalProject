@@ -1,20 +1,17 @@
 ﻿using AutoMapper;
 using System.Reflection;
 
-namespace Application.Mapping;
+namespace Core.Application.Mapping;
 
 public class AssemblyMappingProfile : Profile
 {
-    public AssemblyMappingProfile(Assembly assebmly)
-    {
-        ApplyMappingFromAssembly(assebmly);
-    }
+    public AssemblyMappingProfile(Assembly assebmly) => ApplyMappingFromAssembly(assebmly);
 
     private void ApplyMappingFromAssembly(Assembly assembly)
     {
         var types = assembly.GetExportedTypes()
             .Where(type => type.GetInterfaces()
-            .Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMap<>)))
+            .Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapWith<>)))
             .ToList();
 
         foreach (var type in types)

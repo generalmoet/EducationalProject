@@ -1,21 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Core.Domain.Models;
 using Infrastucture.Persistence.PostgreSQL.EntityConfigurations;
+using Core.Application.Interfaces;
 
 namespace Infrastructure.Persistence.PostgreSQL;
 
-public class UserContext : DbContext
+public class UserContext : DbContext, IUserDbContext
 {
-    public DbSet<User> Persons { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<User>().Property(p => p.Name).IsRequired();
-        modelBuilder.Entity<User>().Property(p => p.Surname).IsRequired();
-        modelBuilder.Entity<User>().Property(p => p.Birthday).IsRequired();
-        modelBuilder.Entity<User>().Property(p => p.Email).IsRequired();
         modelBuilder.ApplyConfiguration(new UserConfiguration());
         base.OnModelCreating(modelBuilder);
     }
