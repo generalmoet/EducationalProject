@@ -22,7 +22,6 @@ public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, UserListVm>
         var users = await _context.Users
             .ProjectTo<UserListDto>(_mapper.ConfigurationProvider)
             .ToListAsync(cancellationToken);
-        //if (users == null) throw new Exception("No users");
 
         return new UserListVm { Users = users };
     }

@@ -2,7 +2,7 @@
 
 namespace Core.Application.Users.Commands;
 
-public class CreateUserCommand : IRequest<Unit>
+public class CreateUserCommand : IRequest
 {
     public string Name { get; set; }
     public string Surname { get; set; }

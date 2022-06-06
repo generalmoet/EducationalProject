@@ -26,7 +26,7 @@ public class UserController : BaseController
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<UserViewModel>> GetUser(int id)
+    public async Task<ActionResult<UserVm>> GetUser(int id)
     {
         var query = new GetUserQuery()
         {
@@ -41,7 +41,14 @@ public class UserController : BaseController
     public async Task<IActionResult> Create([FromBody] CreateUserDto createUserDto)
     {
         var command = _mapper.Map<CreateUserCommand>(createUserDto);
-
+        // var command = new CreateUserCommand()
+        // {
+        //     Name = createUserDto.Name,
+        //     Surname = createUserDto.Surname,
+        //     Birthday = createUserDto.Birthday,
+        //     Email = createUserDto.Email
+        // };
+        
         await Mediator.Send(command);
         return NoContent();
     }
@@ -49,13 +56,13 @@ public class UserController : BaseController
     [HttpPut]
     public async Task<IActionResult> Update([FromBody] UpdateUserDto updateUserDto)
     {
-        var command = _mapper.Map<UpdateUserDto>(updateUserDto);
+        var command = _mapper.Map<UpdateUserCommand>(updateUserDto);
 
         await Mediator.Send(command);
         return NoContent();
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         var command = new DeleteUserCommand()

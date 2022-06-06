@@ -13,10 +13,10 @@ public class UserListDto : IMapWith<User>
 
     public void Mapping(Profile profile)
     {
-        profile.CreateMap<User, UserViewModel>()
-            .ForMember(userVm => userVm.Name, opt => opt.MapFrom(user => user.Name))
-            .ForMember(userVm => userVm.Surname, opt => opt.MapFrom(user => user.Surname))
-            .ForMember(userVm => userVm.Birthday, opt => opt.MapFrom(user => user.Birthday));
+        profile.CreateMap<User, UserListDto>()
+            .ForMember(userDto => userDto.Name, opt => opt.MapFrom(user => user.Name))
+            .ForMember(userDto => userDto.Surname, opt => opt.MapFrom(user => user.Surname))
+            .ForMember(userDto => userDto.Birthday, opt => opt.MapFrom(user => user.Birthday));
     }
 
 }

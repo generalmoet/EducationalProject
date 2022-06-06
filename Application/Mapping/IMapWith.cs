@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 
+
 namespace Core.Application.Mapping;
 
 public interface IMapWith<T>

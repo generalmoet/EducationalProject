@@ -10,7 +10,7 @@ public class CreateUserDto : IMapWith<CreateUserCommand>
     public string Surname { get; set; }
     public DateTime Birthday { get; set; }
     public string Email { get; set; }
-
+    
     public void Mapping(Profile profile)
     {
         profile.CreateMap<CreateUserDto, CreateUserCommand>()
