@@ -41,13 +41,6 @@ public class UserController : BaseController
     public async Task<IActionResult> Create([FromBody] CreateUserDto createUserDto)
     {
         var command = _mapper.Map<CreateUserCommand>(createUserDto);
-        // var command = new CreateUserCommand()
-        // {
-        //     Name = createUserDto.Name,
-        //     Surname = createUserDto.Surname,
-        //     Birthday = createUserDto.Birthday,
-        //     Email = createUserDto.Email
-        // };
         
         await Mediator.Send(command);
         return NoContent();

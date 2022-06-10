@@ -14,9 +14,9 @@ public class CreateUserDto : IMapWith<CreateUserCommand>
     public void Mapping(Profile profile)
     {
         profile.CreateMap<CreateUserDto, CreateUserCommand>()
-            .ForMember(userCommand => userCommand.Name, opt => opt.MapFrom(userDto => Name))
-            .ForMember(userCommand => userCommand.Surname, opt => opt.MapFrom(userDto => Surname))
-            .ForMember(userCommand => userCommand.Birthday, opt => opt.MapFrom(userDto => Birthday))
-            .ForMember(userCommand => userCommand.Email, opt => opt.MapFrom(userDto => Email));
+            .ForMember(userCommand => userCommand.Name, opt => opt.MapFrom(userDto => userDto.Name))
+            .ForMember(userCommand => userCommand.Surname, opt => opt.MapFrom(userDto => userDto.Surname))
+            .ForMember(userCommand => userCommand.Birthday, opt => opt.MapFrom(userDto => userDto.Birthday))
+            .ForMember(userCommand => userCommand.Email, opt => opt.MapFrom(userDto => userDto.Email));
     }
 }
