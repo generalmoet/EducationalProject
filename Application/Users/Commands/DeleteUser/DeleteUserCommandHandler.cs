@@ -1,4 +1,5 @@
-﻿using Core.Application.Interfaces;
+﻿using Core.Application.Exceptions;
+using Core.Application.Interfaces;
 using MediatR;
 
 namespace Core.Application.Users.Commands;
@@ -12,11 +13,11 @@ public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>
         _context = context;
     }
 
-    public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken = default)
     {
         var user = _context.Users.Find(new object[] { request.Id });
 
-        if (user == null) throw new Exception("User not found");
+        if (user == null) throw new UserNotFoundException("User not found");
 
         _context.Users.Remove(user);
         await _context.SaveChangesAsync(cancellationToken);

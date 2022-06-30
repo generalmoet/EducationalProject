@@ -1,4 +1,5 @@
-﻿using Core.Application.Interfaces;
+﻿using Core.Application.Exceptions;
+using Core.Application.Interfaces;
 using MediatR;
 
 namespace Core.Application.Users.Commands;
@@ -12,11 +13,11 @@ public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
         _context = context;
     }
 
-    public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken = default)
     {
         var changingUser = _context.Users.Find(new object[] { request.Id });
 
-        if (changingUser == null) throw new Exception("User not found");
+        if (changingUser == null) throw new UserNotFoundException("User not found");
 
         changingUser.Name = request.Name;
         changingUser.Surname = request.Surname;
