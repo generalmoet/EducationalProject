@@ -7,8 +7,6 @@ using Core.Application.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<UserContext>();
-
 builder.Services.AddAutoMapper(config =>
 {
     config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
