@@ -4,15 +4,15 @@ namespace Application.Tests.Common;
 
 public abstract class TestCommandBase : IDisposable
 {
-    protected readonly UserContext context;
+    protected readonly UserContext Context;
 
     public TestCommandBase()
     {
-        context = UserContextFactory.Create();
+        Context = UserContextFactory.Create();
     }
 
     public void Dispose()
     {
-        UserContextFactory.Destroy(context);
+        UserContextFactory.Destroy(Context);
     }
 }

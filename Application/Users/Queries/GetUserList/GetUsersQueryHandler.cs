@@ -17,7 +17,7 @@ public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, UserListVm>
         _mapper = mapper;
     }
 
-    public async Task<UserListVm> Handle(GetUsersQuery request, CancellationToken cancellationToken)
+    public async Task<UserListVm> Handle(GetUsersQuery request, CancellationToken cancellationToken = default)
     {
         var users = await _context.Users
             .ProjectTo<UserListDto>(_mapper.ConfigurationProvider)

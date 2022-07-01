@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Exceptions;
 using Core.Application.Interfaces;
 using Core.Domain.Models;
 using MediatR;
@@ -17,11 +18,12 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, UserVm>
         _mapper = mapper;
     }
 
-    public async Task<UserVm> Handle(GetUserQuery request, CancellationToken cancellationToken)
+    public async Task<UserVm> Handle(GetUserQuery request, CancellationToken cancellationToken = default)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == request.Id, cancellationToken: cancellationToken);
+        var user = await _context.Users.FirstOrDefaultAsync(u => 
+            u.Id == request.Id, cancellationToken: cancellationToken = default);
 
-        if (user == null) throw new Exception("User not found");
+        if (user == null) throw new UserNotFoundException();
 
         return _mapper.Map<UserVm>(user);
     }

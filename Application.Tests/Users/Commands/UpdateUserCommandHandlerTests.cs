@@ -21,13 +21,13 @@ public class UpdateUserCommandHandlerTests : TestCommandBase
             Surname = "Pupkin"
         };
         
-        var sut = new UpdateUserCommandHandler(context);
+        var sut = new UpdateUserCommandHandler(Context);
         
         //act
         await sut.Handle(command, CancellationToken.None);
         
         //assert
-        context.Users.SingleOrDefault(user => user.Id == command.Id).Should().BeEquivalentTo(command);
+        Context.Users.SingleOrDefault(user => user.Id == command.Id).Should().BeEquivalentTo(command);
     }
     
     [Fact]
@@ -43,7 +43,7 @@ public class UpdateUserCommandHandlerTests : TestCommandBase
             Surname = "Pupkin"
         };
         
-        var sut = new UpdateUserCommandHandler(context);
+        var sut = new UpdateUserCommandHandler(Context);
 
         sut.Invoking
         (

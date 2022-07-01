@@ -19,12 +19,12 @@ public class CreateUserCommandHandlerTests : TestCommandBase
             Surname = "Pupkin"
         };
         
-        var sut = new CreateUserCommandHandler(context);
+        var sut = new CreateUserCommandHandler(Context);
         
         //act
         await sut.Handle(command, CancellationToken.None);
         
         //assert
-        context.Users.SingleOrDefault(user => user.Email == command.Email).Should().BeEquivalentTo(command);
+        Context.Users.SingleOrDefault(user => user.Email == command.Email).Should().BeEquivalentTo(command);
     }
 }
