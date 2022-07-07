@@ -4,6 +4,7 @@ using System.Reflection;
 using AutoMapper;
 using Core.Application;
 using Core.Application.Interfaces;
+using WebUI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,9 +40,12 @@ using (var scope = app.Services.CreateScope())
     }
     catch (Exception ex) { }
 }
+
+app.UseCustomExeptionHandler();
+app.UseRouting();
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
-app.UseRouting();
+
 
 
 
