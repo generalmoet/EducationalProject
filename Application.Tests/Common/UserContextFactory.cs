@@ -18,17 +18,17 @@ public class UserContextFactory
                 {
                     Id = 1,
                     Birthday = DateTime.Today,
-                    Email = "tw1xfeed@gmail.com",
-                    Name = "Alexey",
-                    Surname = "Puris"
+                    Email = "feed@gmail.com",
+                    Name = "Alex",
+                    Surname = "Purnya"
                 },
                 new User
                 {
                     Id = 2,
                     Birthday = DateTime.Today,
-                    Email = "nacicode@gmail.com",
+                    Email = "code@gmail.com",
                     Name = "Nikita",
-                    Surname = "Velikiy"
+                    Surname = "Great"
                 },
                 new User
                 {
@@ -36,7 +36,7 @@ public class UserContextFactory
                     Birthday = DateTime.Today,
                     Email = "gamer2k@gmail.com",
                     Name = "Nikita",
-                    Surname = "Gusev"
+                    Surname = "Moen"
                 }
             );
         context.SaveChanges();
